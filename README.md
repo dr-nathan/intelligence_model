@@ -51,3 +51,6 @@ The results can be found in the Docs and Images folders.
 
 ### parameters.py
 In this file all parameters to tune the simulation are set.
+
+### debugging.py
+This file generates some plots for extra insight in the data. For debugging purposes mainly.
