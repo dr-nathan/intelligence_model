@@ -22,9 +22,6 @@ class Test:
 
     def run(self):
 
-        #self.plot_cog_cap_structure()  # To visualize twin structure
-        #plt.show()
-        
         # Make plots of general learning results and the test structure
         fig, axs = plt.subplots(2, 3) # create 6 subplots
         self.plot_knowledge_structure(axs, (0, 0), 1)

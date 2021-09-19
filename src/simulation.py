@@ -27,7 +27,7 @@ class Simulation:
         self.concentration_matrix = np.zeros((T, N))
         self.cog_cap_matrix = np.zeros((T, N))
         self.available_cogcap_matrix=np.zeros((T, N))
-        self.acquired_knowledge_matrix=np.zeros((N,(T + (Q * len(params.TEST_AGES))))) # this matrix remembers how much acquired knowledge was present by the learnign fo every skill. useful for debugging purposes. Q*2 because you have 100 esay and 100 difficult tests.
+        self.acquired_knowledge_matrix=np.zeros((N,(T + (Q * 2)))) # this matrix remembers how much acquired knowledge was present by the learning of every skill. useful for debugging purposes. Q*2 because you have 100 esay and 100 difficult tests.
 
     def run(self):
         """ Create schooling array for every person (take into account twins). Save it in schooling matrix, and update achievement and learning matrix for every person """
@@ -152,5 +152,5 @@ class Simulation:
             return int(0)
         
         return sum(self.microskill_similarity_matrix[microskill, acquired_microskills]) # for every learned skill, get the similiraty to the skill at hand, and sum it.
-        #should maybe be normalized! Right now we get the sum, and choose to weigh them by 0.001. But more insight would be nice #TODO: plot to see range of values
-        #register all acq know: 100* 1400 values. too much. Plot acq. knowledge for a handful of people? Ok lets try. 
+        #should maybe be normalized! Right now we get the sum, and choose to weigh them by 0.001. 
+    

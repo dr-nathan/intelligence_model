@@ -46,7 +46,7 @@ class Debugging:
         req_cog_cap = self.simulation.knowledge_matrix[:, 0]
         plt.plot(req_cog_cap)
         peak_valley_skills=self.simulation.chosen_skills
-        colors=['go', 'ro']
+        colors=['yo', 'ro']
         for i in range(2):
             plt.plot(peak_valley_skills[i], req_cog_cap[peak_valley_skills[i]], colors[i]) # child
         plt.title('chosen skills. green=child, red=adult')
