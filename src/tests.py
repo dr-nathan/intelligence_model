@@ -130,10 +130,10 @@ class Test:
         corr_sum_knowl_cog_cap = []
         for timepoint in range(T):
             # This line gives a RuntimeWarning because one of the vectors does not change, this can be ignored.
-            corr_conc = np.corrcoef(learned_skills_per_timepoint_matrix[timepoint, :], # for every timepoint, calculate correlation of concentration with sum of acquired skills 
+            corr_conc = np.corrcoef(learned_skills_per_timepoint_matrix[timepoint, :], # NV: for every timepoint, calculate correlation of concentration with sum of learned skills 
                                     self.simulation.concentration_matrix[timepoint, :])[0, 1]
             corr_sum_knowl_conc.append(corr_conc)
-            corr_cog_cap = np.corrcoef(learned_skills_per_timepoint_matrix[timepoint, :], # idem but cog cap. Of course in the beginning scores are noisy
+            corr_cog_cap = np.corrcoef(learned_skills_per_timepoint_matrix[timepoint, :], #NV: idem but cog cap. Of course in the beginning scores are noisy
                                        self.simulation.cog_cap_matrix[timepoint, :])[0, 1]
             corr_sum_knowl_cog_cap.append(corr_cog_cap)
 
@@ -175,7 +175,7 @@ class Test:
         axs[place].set_title(str(plot_nr) + ': Test Structure')
         axs[place].legend()
 
-    def plot_corr_test_items(self, axs, place, test_nr, plot_nr): # in the test matrix, we have 10 base skills, which we repeat 10 time each, creating 10 skill groups. Here, we check the correlation of scores between item groups. 5 first skill groups are the ones chosen on the sin peak, 5 last on the sin valleys. So you expect high corr between 1-5 and high corr between 5-10, but not between groups.  
+    def plot_corr_test_items(self, axs, place, test_nr, plot_nr): #NV:  in the test matrix, we have 10 base skills, which we repeat 10 time each, creating 10 skill groups. Here, we check the correlation of scores between item groups. 5 first skill groups are the ones chosen on the sin peak, 5 last on the sin valleys. So you expect high corr between 1-5 and high corr between 5-10, but not between groups.  
         """
         Plot correlation matrix of item groups
         """
@@ -294,7 +294,7 @@ class Test:
 
         test_scores = self.simulation.learning_matrix[(last_index - Q):last_index, :] # Get scores of all people for relevant test
         scores_by_similar_items = np.zeros((10, N)) #empty matrix of similarity group X persons. 
-        select_items = np.arange(0, Q, 10) #the structure of tests, is that the 10 base skills are repeated with noise. So every 10th skill is similar. So here we select the 10 base skills whih have been repeated. Note: is hardcoded. ideally it wouldnt 
+        select_items = np.arange(0, Q, 10) #NV: the structure of tests, is that the 10 base skills are repeated with noise. So every 10th skill is similar. So here we select the 10 base skills whih have been repeated. Note: is hardcoded. ideally it wouldnt 
 
         for var in range(10):
             scores_by_similar_items[var, :] = test_scores[select_items, :].sum(axis=0) # get test scores of skills in a group and sum them for every person
@@ -314,7 +314,7 @@ class Test:
             df.to_csv("Docs/Test_" + str(testnr+1) + "/raw_iq_score_" + params.PERS_TWIN + ".csv", index=False)
 
 
-    def compute_heritability(self):
+    def compute_heritability(self): #NV: does not print, lookup excel file
         """ Function to compute heritability by use of Falconer's formula: H2 = 2(r(MZ) - r(DZ)) """
 
         h2 = []

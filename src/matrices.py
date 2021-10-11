@@ -14,7 +14,7 @@ np.random.seed(41)
 # TODO: move numbers to parameters file + structure? + concentration/cog_cap index as param?
 
 
-def create_personality_matrix(twin_type):
+def create_personality_matrix(twin_type): #NV: max cognitieve cap, max concentratie
     """
     Matrix that codes the value of person i on characteristic c (cognitive capacity and concentration) (N x C)
     """
