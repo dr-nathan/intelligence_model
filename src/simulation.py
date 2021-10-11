@@ -21,13 +21,13 @@ class Simulation:
         self.test_matrix, self.chosen_skills = matrices.create_test_matrix(self.knowledge_matrix) # 2*Q x F
         self.allskills_matrix=np.vstack((self.knowledge_matrix, self.test_matrix)) # matrix with all skills and factors, test included
         self.microskill_similarity_matrix = self.allskills_matrix.dot(self.allskills_matrix.T) #get similarity of every skill and test skill
-        self.learning_matrix = np.zeros((T + (Q * len(params.TEST_AGES)), N), dtype=bool) #1400x100. Represents amount of microskills learned (T/F). But does not index microskills! For example, [934,1] is not microskill number 934, but the microskill presented at timestep number 934. But for the tests, it does index correctly. Ex: test skill 23 will be in postion 1023
+        self.learning_matrix = np.zeros((T + (Q * len(params.TEST_AGES)), N), dtype=bool) #1400x100. Represents amount of microskills learned (T/F). #NV: But does not index microskills! For example, [934,1] is not microskill number 934, but the microskill presented at timestep number 934. But for the tests, it does index correctly. Ex: test skill 23 will be in postion 1023. Something to keep in mind
         self.achievement_matrix = np.zeros((N, M), dtype=bool) # 100x1000. Indexes microskill, and wether it is learned or not (T/F)
         self.schooling_matrix = np.zeros((N, M), dtype=int) #100x1000. shows wich skill is presented at which timestep. 
         self.concentration_matrix = np.zeros((T, N))
         self.cog_cap_matrix = np.zeros((T, N))
-        self.available_cogcap_matrix=np.zeros((T, N))
-        self.acquired_knowledge_matrix=np.zeros((N,(T + (Q * 2)))) # this matrix remembers how much acquired knowledge was present by the learning of every skill. useful for debugging purposes. Q*2 because you have 100 esay and 100 difficult tests.
+        self.available_cogcap_matrix=np.zeros((T, N))#NV: for debugging purposes
+        self.acquired_knowledge_matrix=np.zeros((N,(T + (Q * 2)))) #NV: this matrix remembers how much acquired knowledge was present by the learning of every skill. useful for debugging purposes. Q*2 because you have 100 easy and 100 difficult tests.
 
     def run(self):
         """ Create schooling array for every person (take into account twins). Save it in schooling matrix, and update achievement and learning matrix for every person """
